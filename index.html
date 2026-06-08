@@ -296,19 +296,19 @@
     .col:hover strong { display: block; }
     .heat {
       display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 8px;
+      grid-template-columns: repeat(4, minmax(128px, 1fr));
+      gap: 10px;
     }
     .heat-cell {
-      min-height: 72px;
-      padding: 9px 7px;
+      min-height: 104px;
+      padding: 14px 12px;
       border-radius: 8px;
       color: #fff;
       background: var(--blue);
       font-family: "Segoe UI", Verdana, sans-serif;
     }
-    .heat-cell b { display: block; font-size: 16px; }
-    .heat-cell span { display: block; margin-top: 4px; font-size: 11px; opacity: .86; }
+    .heat-cell b { display: block; font-size: 18px; line-height: 1.05; }
+    .heat-cell span { display: block; margin-top: 7px; font-size: 13px; opacity: .9; }
     .donut-wrap {
       display: grid;
       grid-template-columns: 210px minmax(0, 1fr);
@@ -394,14 +394,14 @@
     @media (max-width: 980px) {
       .hero-strip, .cards, .grid3, .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .section-head, .grid2, .donut-wrap { grid-template-columns: 1fr; }
-      .heat { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      .heat { grid-template-columns: repeat(2, minmax(128px, 1fr)); }
     }
     @media (max-width: 640px) {
       header { min-height: 72vh; }
       .hero-strip, .cards, .grid3, .steps { grid-template-columns: 1fr; }
       section { padding: 48px 0; }
       .bar-row { grid-template-columns: 72px minmax(90px, 1fr) 70px; gap: 8px; }
-      .heat { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .heat { grid-template-columns: 1fr; }
       .columns { gap: 4px; height: 210px; }
       .col::after { font-size: 10px; }
       table { font-size: 12px; }
