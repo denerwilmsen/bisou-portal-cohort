@@ -1,0 +1,704 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bisou Jalecos | Recompra e Ritmo de Vendas</title>
+  <style>
+    :root {
+      --ink: #191613;
+      --muted: #675f57;
+      --paper: #f7f2ea;
+      --surface: #fffdf9;
+      --line: #ded2c4;
+      --rose: #a94f61;
+      --blue: #275f72;
+      --green: #326f5a;
+      --gold: #a06f30;
+      --coal: #25211d;
+      --soft: #eee4d8;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+    header {
+      min-height: 78vh;
+      display: grid;
+      align-items: end;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(24,19,16,.96), rgba(24,19,16,.72) 52%, rgba(24,19,16,.24)),
+        url("assets/drive-foto-img-3585.jpg") center / cover no-repeat;
+    }
+    header .wrap { padding: 54px 0 58px; }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 10px;
+      border: 1px solid rgba(255,255,255,.36);
+      border-radius: 999px;
+      background: rgba(0,0,0,.22);
+      font-family: "Segoe UI", Verdana, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 940px;
+      margin: 18px 0 16px;
+      font-size: clamp(42px, 7vw, 86px);
+      line-height: .96;
+      letter-spacing: 0;
+    }
+    .hero-copy {
+      max-width: 780px;
+      margin: 0;
+      color: rgba(255,255,255,.88);
+      font-size: clamp(18px, 2.2vw, 23px);
+    }
+    .hero-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 34px;
+      max-width: 960px;
+    }
+    .hero-kpi {
+      min-height: 96px;
+      padding: 15px;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 8px;
+      background: rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+    }
+    .hero-kpi b { display: block; font-size: 28px; line-height: 1; }
+    .hero-kpi span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255,255,255,.76);
+      font-family: "Segoe UI", Verdana, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247,242,234,.94);
+      backdrop-filter: blur(12px);
+    }
+    nav .wrap {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+    nav a {
+      flex: 0 0 auto;
+      padding: 9px 11px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      font-family: "Segoe UI", Verdana, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    section { padding: 66px 0; }
+    .alt {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(280px, .68fr);
+      gap: 34px;
+      align-items: end;
+      margin-bottom: 26px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(32px, 4vw, 56px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      line-height: 1.15;
+    }
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card, .panel, .chart-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+    .card {
+      min-height: 156px;
+      padding: 19px;
+    }
+    .card .metric {
+      display: block;
+      margin: 10px 0 7px;
+      font-family: "Segoe UI", Verdana, sans-serif;
+      font-size: 32px;
+      line-height: 1;
+      font-weight: 900;
+    }
+    .label {
+      color: var(--muted);
+      font-family: "Segoe UI", Verdana, sans-serif;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .card p, .panel p, .chart-panel p { margin: 0; color: var(--muted); }
+    .grid2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .panel, .chart-panel { padding: 24px; }
+    .statement {
+      padding: 30px;
+      border-left: 6px solid var(--gold);
+      border-radius: 8px;
+      background: var(--coal);
+      color: #fff;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.12;
+    }
+    .statement small {
+      display: block;
+      margin-top: 14px;
+      color: rgba(255,255,255,.72);
+      font-family: "Segoe UI", Verdana, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .chart-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+    .chart-title h3 { margin: 0; }
+    .pill {
+      display: inline-flex;
+      padding: 5px 8px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--blue);
+      font-family: "Segoe UI", Verdana, sans-serif;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .pill.rose { background: var(--rose); }
+    .pill.green { background: var(--green); }
+    .pill.gold { background: var(--gold); }
+    .bars { display: grid; gap: 11px; }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 92px minmax(120px, 1fr) 92px;
+      gap: 12px;
+      align-items: center;
+      font-family: "Segoe UI", Verdana, sans-serif;
+      font-size: 13px;
+    }
+    .bar-label { font-weight: 800; }
+    .bar-track {
+      height: 14px;
+      border-radius: 999px;
+      background: var(--soft);
+      overflow: hidden;
+    }
+    .bar-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--blue);
+      transition: width .8s ease;
+    }
+    .bar-value { color: var(--muted); text-align: right; font-weight: 800; }
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(var(--count), minmax(18px, 1fr));
+      gap: 6px;
+      align-items: end;
+      height: 250px;
+      padding-top: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .col {
+      position: relative;
+      min-height: 2px;
+      border-radius: 6px 6px 0 0;
+      background: var(--rose);
+      transition: height .8s ease;
+    }
+    .col::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 50%;
+      bottom: -26px;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-family: "Segoe UI", Verdana, sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .col strong {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 6px);
+      transform: translateX(-50%);
+      display: none;
+      padding: 4px 6px;
+      border-radius: 5px;
+      color: #fff;
+      background: var(--coal);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    .col:hover strong { display: block; }
+    .heat {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .heat-cell {
+      min-height: 72px;
+      padding: 9px 7px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--blue);
+      font-family: "Segoe UI", Verdana, sans-serif;
+    }
+    .heat-cell b { display: block; font-size: 16px; }
+    .heat-cell span { display: block; margin-top: 4px; font-size: 11px; opacity: .86; }
+    .donut-wrap {
+      display: grid;
+      grid-template-columns: 210px minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+    .donut {
+      width: 210px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: conic-gradient(var(--green) 0 6.06%, var(--soft) 6.06% 100%);
+    }
+    .donut div {
+      width: 128px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--surface);
+      font-family: "Segoe UI", Verdana, sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: "Segoe UI", Verdana, sans-serif;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 11px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .callout {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #efe5d8;
+    }
+    .callout b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 22px;
+      line-height: 1.15;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .step {
+      min-height: 168px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+    .step b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 1.15;
+    }
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--muted);
+      font-family: "Segoe UI", Verdana, sans-serif;
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero-strip, .cards, .grid3, .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section-head, .grid2, .donut-wrap { grid-template-columns: 1fr; }
+      .heat { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      header { min-height: 72vh; }
+      .hero-strip, .cards, .grid3, .steps { grid-template-columns: 1fr; }
+      section { padding: 48px 0; }
+      .bar-row { grid-template-columns: 72px minmax(90px, 1fr) 70px; gap: 8px; }
+      .heat { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .columns { gap: 4px; height: 210px; }
+      .col::after { font-size: 10px; }
+      table { font-size: 12px; }
+      th, td { padding: 9px 7px; }
+    }
+    @media print {
+      nav { display: none; }
+      body { background: #fff; }
+      header { min-height: 40vh; }
+      section { padding: 34px 0; }
+      .card, .panel, .chart-panel, .step, .callout { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <span class="eyebrow">Bisou Jalecos - Nuvemshop - 2025-2026</span>
+      <h1>Recompra baixa, venda forte e horÃ¡rios claros de decisÃ£o.</h1>
+      <p class="hero-copy">Um portal para explicar a cohort sem virar aula tÃ©cnica: a Bisou vende, mas precisa transformar primeira compra em relacionamento, margem e segunda compra.</p>
+      <div class="hero-strip">
+        <div class="hero-kpi"><b>5,41%</b><span>recompra por cliente</span></div>
+        <div class="hero-kpi"><b>6.086</b><span>clientes analisadas</span></div>
+        <div class="hero-kpi"><b>10h</b><span>maior pico horÃ¡rio</span></div>
+        <div class="hero-kpi"><b>Quarta</b><span>maior volume semanal</span></div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="wrap">
+      <a href="#resumo">Resumo</a>
+      <a href="#cohort">Cohort</a>
+      <a href="#dias">Dias</a>
+      <a href="#horarios">HorÃ¡rios</a>
+      <a href="#decisao">DecisÃ£o</a>
+      <a href="docs/relatorio-cohort-sazonalidade-vendas-bisou.md">Markdown</a>
+      <a href="semana-2-3-consolidado.html">Semanas 2-3</a>
+    </div>
+  </nav>
+
+  <section id="resumo">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Resumo executivo</h2>
+        <p class="lead">A promoÃ§Ã£o ajuda a vender agora. A anÃ¡lise mostra que a decisÃ£o precisa evoluir: medir margem, ticket, recompra e valor da cliente depois da primeira compra.</p>
+      </div>
+      <div class="cards">
+        <article class="card"><span class="label">Pedidos cohort</span><span class="metric">6.475</span><p>Pedidos vÃ¡lidos apÃ³s remover cancelados, reembolsados e invÃ¡lidos.</p></article>
+        <article class="card"><span class="label">Receita cohort</span><span class="metric">R$ 3,81 mi</span><p>Base de receita usada para a leitura de recompra.</p></article>
+        <article class="card"><span class="label">Receita recompra</span><span class="metric">6,06%</span><p>ParticipaÃ§Ã£o da recompra na receita total analisada.</p></article>
+        <article class="card"><span class="label">Ticket mÃ©dio</span><span class="metric">R$ 593,75</span><p>Base de ritmo de vendas por dia e horÃ¡rio.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="statement">
+        A promoÃ§Ã£o compra a primeira venda. A pergunta agora Ã© se ela cria uma segunda venda com margem saudÃ¡vel.
+        <small>TraduÃ§Ã£o da cohort para decisÃ£o de negÃ³cio</small>
+      </div>
+    </div>
+  </section>
+
+  <section id="cohort">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Cohort e recompra</h2>
+        <p class="lead">Cohort agrupa clientes pelo mÃªs da primeira compra e mostra se elas voltam. A Bisou tem aquisiÃ§Ã£o forte, mas recompra ainda pequena para sustentar desconto agressivo como eixo principal.</p>
+      </div>
+      <div class="grid2">
+        <article class="chart-panel">
+          <div class="chart-title">
+            <h3>ParticipaÃ§Ã£o da recompra na receita</h3>
+            <span class="pill green">R$ 230.971,85</span>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut"><div>6,06%</div></div>
+            <p>De R$ 3.811.182,46 em receita analisada, apenas R$ 230.971,85 veio de recompras. Isso reforÃ§a que o motor atual depende muito de primeira compra.</p>
+          </div>
+        </article>
+        <article class="chart-panel">
+          <div class="chart-title">
+            <h3>Recompra por cohort</h3>
+            <span class="pill rose">top meses</span>
+          </div>
+          <div class="bars" id="cohortBars"></div>
+        </article>
+      </div>
+      <div class="grid3" style="margin-top:14px">
+        <div class="callout"><b>O que isso prova</b><p>A venda existe, mas ainda nÃ£o hÃ¡ recorrÃªncia suficiente para decidir sÃ³ por ROAS.</p></div>
+        <div class="callout"><b>Onde mora o risco</b><p>Compre 2 Pague 1 pode reduzir margem e antecipar demanda sem criar recompra proporcional.</p></div>
+        <div class="callout"><b>Como agir</b><p>Testar kit com melhor margem e ativar CRM de segunda compra em janelas de 30, 60 e 90 dias.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dias" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Dias de maior venda</h2>
+        <p class="lead">Quarta-feira lidera volume e receita mÃ©dia diÃ¡ria. TerÃ§a e sexta tambÃ©m sÃ£o fortes. Domingo Ã© mais fraco, mas ainda nÃ£o Ã© irrelevante.</p>
+      </div>
+      <div class="grid2">
+        <article class="chart-panel">
+          <div class="chart-title">
+            <h3>Pedidos por dia da semana</h3>
+            <span class="pill rose">volume</span>
+          </div>
+          <div class="bars" id="weekdayBars"></div>
+        </article>
+        <article class="chart-panel">
+          <div class="chart-title">
+            <h3>Receita mÃ©dia por dia</h3>
+            <span class="pill gold">intensidade</span>
+          </div>
+          <div class="bars" id="weekdayRevenueBars"></div>
+        </article>
+      </div>
+      <div style="margin-top:20px; overflow-x:auto">
+        <table>
+          <thead><tr><th>Dia</th><th class="num">Pedidos</th><th class="num">Receita</th><th class="num">Receita/dia</th><th class="num">Ticket</th><th class="num">Share</th></tr></thead>
+          <tbody id="weekdayTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="horarios">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>HorÃ¡rios de pico</h2>
+        <p class="lead">A compra se concentra em duas janelas fÃ¡ceis de operar: manhÃ£ comercial, especialmente 09h a 11h, e noite, especialmente 20h a 22h.</p>
+      </div>
+      <div class="chart-panel">
+        <div class="chart-title">
+          <h3>Pedidos por hora do dia</h3>
+          <span class="pill">24 horas</span>
+        </div>
+        <div class="columns" id="hourColumns"></div>
+      </div>
+      <div class="grid2" style="margin-top:18px">
+        <article class="chart-panel">
+          <div class="chart-title">
+            <h3>Top horÃ¡rios</h3>
+            <span class="pill rose">conversÃ£o</span>
+          </div>
+          <div class="bars" id="topHourBars"></div>
+        </article>
+        <article class="chart-panel">
+          <div class="chart-title">
+            <h3>PerÃ­odos do dia</h3>
+            <span class="pill green">share receita</span>
+          </div>
+          <div class="heat" id="periodHeat"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="decisao" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>DecisÃ£o recomendada</h2>
+        <p class="lead">O caminho nÃ£o Ã© desligar promoÃ§Ã£o de uma vez. Ã‰ trocar o critÃ©rio de sucesso: menos faturamento bruto isolado, mais margem e recompra por cohort.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><b>1. Manter controle</b><p>Deixar Compre 2 Pague 1 como referÃªncia de comparaÃ§Ã£o, sem fazer dele a identidade principal da marca.</p></div>
+        <div class="step"><b>2. Testar kit</b><p>Rodar "escolha 3 e pague 2" em modelos selecionados para preservar melhor margem e elevar ticket.</p></div>
+        <div class="step"><b>3. Programar janelas</b><p>Concentrar pressÃ£o comercial em 09h-11h, 14h-17h e 20h-22h, com reforÃ§o de terÃ§a a sexta.</p></div>
+        <div class="step"><b>4. Ativar CRM</b><p>Criar rÃ©guas D+3, D+12, D+30, D+45 e D+90 para transformar primeira compra em segunda compra.</p></div>
+        <div class="step"><b>5. Medir margem</b><p>Comparar conversÃ£o, ticket, margem por pedido, recompra 30/60/90 e troca/devoluÃ§Ã£o por oferta.</p></div>
+        <div class="step"><b>6. Provar premium</b><p>Antes do desconto, reforÃ§ar caimento, acabamento, tecido, corpo real, troca e seguranÃ§a da compra online.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      Fontes: API Nuvemshop, `nuvemshop-cohort-retention.json`, `dados-relatorio-2025-2026.json`. Portal gerado em 2026-06-08.
+    </div>
+  </footer>
+
+  <script>
+    const fmtInt = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 0 });
+    const fmtMoney = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+    const fmtPct = new Intl.NumberFormat("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    const cohorts = [
+      { label: "Jan/25", customers: 70, repeatRate: 21.43 },
+      { label: "Fev/25", customers: 181, repeatRate: 17.68 },
+      { label: "Mar/25", customers: 187, repeatRate: 19.25 },
+      { label: "Abr/25", customers: 240, repeatRate: 14.58 },
+      { label: "Mai/25", customers: 271, repeatRate: 9.59 },
+      { label: "Jun/25", customers: 235, repeatRate: 10.21 },
+      { label: "Nov/25", customers: 686, repeatRate: 3.50 },
+      { label: "Dez/25", customers: 663, repeatRate: 4.98 },
+      { label: "Jan/26", customers: 509, repeatRate: 2.36 },
+      { label: "Fev/26", customers: 504, repeatRate: 1.98 }
+    ];
+
+    const weekdays = [
+      { label: "Segunda", orders: 828, revenue: 501929.07, revenuePerDay: 6971.24, aov: 606.19, share: 13.80 },
+      { label: "TerÃ§a", orders: 934, revenue: 552786.55, revenuePerDay: 7572.42, aov: 591.85, share: 15.20 },
+      { label: "Quarta", orders: 974, revenue: 570176.29, revenuePerDay: 7919.12, aov: 585.40, share: 15.67 },
+      { label: "Quinta", orders: 863, revenue: 516127.62, revenuePerDay: 7168.44, aov: 598.06, share: 14.19 },
+      { label: "Sexta", orders: 934, revenue: 544512.61, revenuePerDay: 7669.19, aov: 582.99, share: 14.97 },
+      { label: "SÃ¡bado", orders: 826, revenue: 491656.56, revenuePerDay: 6924.74, aov: 595.23, share: 13.51 },
+      { label: "Domingo", orders: 768, revenue: 460709.06, revenuePerDay: 6488.86, aov: 599.88, share: 12.66 }
+    ];
+
+    const hours = [
+      { label: "00h", orders: 112, revenue: 65905.06 }, { label: "01h", orders: 43, revenue: 27145.32 },
+      { label: "02h", orders: 17, revenue: 11003.11 }, { label: "03h", orders: 17, revenue: 9397.90 },
+      { label: "04h", orders: 12, revenue: 7160.64 }, { label: "05h", orders: 25, revenue: 14870.08 },
+      { label: "06h", orders: 80, revenue: 45737.81 }, { label: "07h", orders: 238, revenue: 143981.13 },
+      { label: "08h", orders: 350, revenue: 205288.12 }, { label: "09h", orders: 384, revenue: 224480.88 },
+      { label: "10h", orders: 420, revenue: 248561.49 }, { label: "11h", orders: 368, revenue: 221113.69 },
+      { label: "12h", orders: 348, revenue: 203263.47 }, { label: "13h", orders: 337, revenue: 209515.52 },
+      { label: "14h", orders: 341, revenue: 200935.83 }, { label: "15h", orders: 325, revenue: 188863.78 },
+      { label: "16h", orders: 328, revenue: 197362.16 }, { label: "17h", orders: 347, revenue: 204519.75 },
+      { label: "18h", orders: 327, revenue: 192296.66 }, { label: "19h", orders: 323, revenue: 188274.08 },
+      { label: "20h", orders: 351, revenue: 208782.28 }, { label: "21h", orders: 396, revenue: 237314.99 },
+      { label: "22h", orders: 392, revenue: 235748.66 }, { label: "23h", orders: 246, revenue: 146375.35 }
+    ];
+
+    const periods = [
+      { label: "Madrugada", orders: 226, revenue: 135482.11, share: 3.72 },
+      { label: "ManhÃ£", orders: 1840, revenue: 1089163.12, share: 29.94 },
+      { label: "Tarde", orders: 2026, revenue: 1204460.51, share: 33.11 },
+      { label: "Noite", orders: 2035, revenue: 1208792.02, share: 33.23 }
+    ];
+
+    function renderBars(id, rows, valueKey, formatter, color) {
+      const el = document.getElementById(id);
+      const max = Math.max(...rows.map(row => row[valueKey]));
+      el.innerHTML = rows.map(row => {
+        const width = Math.max(3, (row[valueKey] / max) * 100);
+        return `
+          <div class="bar-row">
+            <div class="bar-label">${row.label}</div>
+            <div class="bar-track"><div class="bar-fill" style="width:${width}%; background:${color}"></div></div>
+            <div class="bar-value">${formatter(row[valueKey], row)}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderHourColumns() {
+      const el = document.getElementById("hourColumns");
+      const max = Math.max(...hours.map(row => row.orders));
+      el.style.setProperty("--count", hours.length);
+      el.innerHTML = hours.map((row, index) => {
+        const height = Math.max(2, (row.orders / max) * 100);
+        const isPeak = ["09h", "10h", "11h", "20h", "21h", "22h"].includes(row.label);
+        return `<div class="col" data-label="${index % 2 === 0 ? row.label : ""}" style="height:${height}%; background:${isPeak ? "var(--rose)" : "var(--blue)"}"><strong>${row.label}: ${fmtInt.format(row.orders)} pedidos</strong></div>`;
+      }).join("");
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById("weekdayTable");
+      tbody.innerHTML = weekdays.map(row => `
+        <tr>
+          <td>${row.label}</td>
+          <td class="num">${fmtInt.format(row.orders)}</td>
+          <td class="num">${fmtMoney.format(row.revenue)}</td>
+          <td class="num">${fmtMoney.format(row.revenuePerDay)}</td>
+          <td class="num">${fmtMoney.format(row.aov)}</td>
+          <td class="num">${fmtPct.format(row.share)}%</td>
+        </tr>
+      `).join("");
+    }
+
+    function renderPeriods() {
+      const el = document.getElementById("periodHeat");
+      const max = Math.max(...periods.map(row => row.share));
+      el.innerHTML = periods.map(row => {
+        const alpha = .35 + (row.share / max) * .65;
+        return `
+          <div class="heat-cell" style="background:rgba(50,111,90,${alpha})">
+            <b>${row.label}</b>
+            <span>${fmtInt.format(row.orders)} pedidos</span>
+            <span>${fmtPct.format(row.share)}% da receita</span>
+          </div>
+        `;
+      }).join("");
+    }
+
+    renderBars("cohortBars", cohorts, "repeatRate", value => `${fmtPct.format(value)}%`, "var(--green)");
+    renderBars("weekdayBars", weekdays, "orders", value => fmtInt.format(value), "var(--rose)");
+    renderBars("weekdayRevenueBars", weekdays, "revenuePerDay", value => fmtMoney.format(value), "var(--gold)");
+    renderBars("topHourBars", [...hours].sort((a, b) => b.orders - a.orders).slice(0, 10), "orders", (value, row) => `${fmtInt.format(value)} - ${fmtMoney.format(row.revenue)}`, "var(--blue)");
+    renderHourColumns();
+    renderPeriods();
+    renderTable();
+  </script>
+</body>
+</html>
+
